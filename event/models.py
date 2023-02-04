@@ -25,7 +25,7 @@ class EventType(models.Model):
 class Event(models.Model):
     id = models.UUIDField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event_type = models.ForeignKey(EventType, on_delete=models.CASCADE)
+    event_type = models.ForeignKey(EventType, on_delete=models.SET_NULL, null=True)
     info = models.JSONField()
     timestamp = models.DateTimeField(auto_now_add=False)
     created_at = models.DateTimeField(auto_now_add=True)
