@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.conf import settings
@@ -23,9 +25,10 @@ class EventType(models.Model):
 
 
 class Event(models.Model):
-    id = models.UUIDField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event_type = models.ForeignKey(EventType, on_delete=models.SET_NULL, null=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4,
+         editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    event_type = models.ForeignKey(EventType, on_delete=models.DO_NOTHING)
     info = models.JSONField()
     timestamp = models.DateTimeField(auto_now_add=False)
     created_at = models.DateTimeField(auto_now_add=True)

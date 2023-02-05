@@ -4,7 +4,7 @@ from .models import EventType, Event
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    fields = ['user', 'event_type', 'timestamp']
+    fields = ['user', 'event_type', 'info', 'timestamp']
     list_filter = ['event_type', 'timestamp']
 
 

@@ -21,6 +21,5 @@ class EventTypeViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
 
-
     def new_type_create(self, serializer):
         serializer.save()
